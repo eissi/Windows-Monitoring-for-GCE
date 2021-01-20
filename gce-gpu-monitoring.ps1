@@ -67,7 +67,7 @@ while(1){
     $gpuusage = $values.countersamples|?{$_.path -match "gpu usage"}
     $data.timeSeries +=
         @{'metric'=@{
-            'type'="custom.googleapis.com/gpuusage_total_percent"
+            'type'="custom.googleapis.com/gpu_utilization"
             }
         
         'resource'=@{
@@ -96,7 +96,7 @@ while(1){
     $gpuusage = $values.countersamples|?{$_.path -match "memory"}
     $data.timeSeries +=
         @{'metric'=@{
-            'type'="custom.googleapis.com/gpumemoryusage_total_percent"
+            'type'="custom.googleapis.com/gpu_memory_utilization"
             }        
         'resource'=@{
             'type'='gce_instance'
