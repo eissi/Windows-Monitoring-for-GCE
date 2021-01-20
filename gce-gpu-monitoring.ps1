@@ -55,7 +55,7 @@ while(1){
                                 'endTime'=$values.Timestamp.ToString("O")
                                 }
                             'value'=@{
-                                'doubleValue'=$value.CookedValue
+                                'int64Value'=$value.CookedValue
                                 }                    
                         }        
                     )
@@ -85,7 +85,7 @@ while(1){
                         'endTime'=$values.Timestamp.ToString("O")
                         }
                     'value'=@{
-                        'doubleValue'=($gpuusage.Cookedvalue|Measure-Object -Average).Average
+                        'int64Value'=($gpuusage.Cookedvalue|Measure-Object -Average).Average
                         }
                     
                 }        
@@ -112,7 +112,7 @@ while(1){
                         'endTime'=$values.Timestamp.ToString("O")
                         }
                     'value'=@{
-                        'doubleValue'=($gpuusage.Cookedvalue|Measure-Object -Average).Average
+                        'int64Value'=($gpuusage.Cookedvalue|Measure-Object -Average).Average
                         }                    
                 }        
             )
