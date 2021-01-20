@@ -35,7 +35,7 @@ while(1){
     $data = @{'timeSeries'=@()}
     if ($collect_each_core){
         foreach ($value in $values.CounterSamples){
-            $countername=$value.Path.split('\')[-1] -replace'[\W]','' 
+            $countername=$value.Path.split('\')[-1] -replace'[\W]','_' 
             $countername+='_core' + $value.InstanceName.substring(1,1) + '_percent'
             $data.timeSeries +=
                 @{'metric'=@{
