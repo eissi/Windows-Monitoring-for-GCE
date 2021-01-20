@@ -128,6 +128,10 @@ while(1){
     catch{
         #if the token is expired, set it again and send the metrics
         $access_token = Invoke-Expression $access_token_command
+        $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
+        $headers.Add("Authorization", "Bearer "+$access_token)
+        $headers.Add("Content-Type", 'application/json; charset=utf-8') 
+
         $result=Invoke-RestMethod -Method Post -Headers $headers -Uri "https://monitoring.googleapis.com/v3/projects/$project_id/timeSeries" -Body $body    
     }
 
