@@ -19,7 +19,7 @@ $counters += $cnt.PathsWithInstances -match 'GPU USAGE'
 $counters += $cnt.PathsWithInstances -match 'GPU MEMORY USAGE'
 
 $access_token_command = 'gcloud auth application-default print-access-token'
-$access_token = Invoke-Expression $access_token_command
+#$access_token = Invoke-Expression $access_token_command
 
 $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
 $headers.Add("Authorization", "Bearer "+$access_token)
@@ -127,7 +127,7 @@ while(1){
     }
     catch{
         #if the token is expired, set it again and send the metrics
-        $access_token_command = 'gcloud auth application-default print-access-token'
+        $access_token = Invoke-Expression $access_token_command
         $result=Invoke-RestMethod -Method Post -Headers $headers -Uri "https://monitoring.googleapis.com/v3/projects/$project_id/timeSeries" -Body $body    
     }
 
